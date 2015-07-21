@@ -35,12 +35,53 @@ function expect(target) {
 // / /__/ /_/ / / / (__  ) /_/ /  / /_/ / /__/ /_/ /_/ / /  (__  )
 // \___/\____/_/ /_/____/\__/_/   \__,_/\___/\__/\____/_/  /____/
 //
+
+
+
+
 // Only add code to *THIS* section!
 
-// ????????
-// ????????
-// ????????
+var Dog = function(options){
+  // Default values.
+  this.status =  'normal';
+  this.hungry = true;
+  this.color = 'black';
+  this.owner = null;
 
+  // Override the defaults if they are set.
+  if (options && options.hasOwnProperty('status')){
+    this.status = options.status;
+  }
+
+  if (options && options.hasOwnProperty('hungry')){
+    this.hungry = options.hungry;
+  }
+
+  if (options && options.hasOwnProperty('color')){
+    this.color = options.color;
+  }
+
+  if (options && options.hasOwnProperty('owner')){
+    this.owner = options.owner;
+  }
+
+};
+
+var Human = function(options){
+  this.cool = false;
+
+  if (options && options.hasOwnProperty('cool')){
+    this.cool = options.cool;
+  }
+};
+
+Human.prototype.pet = function (animal) {
+  animal.status = 'happy';
+};
+
+Human.prototype.feed = function (animal) {
+  animal.hungry = false;
+};
 
 //        __
 //   ____/ /___  ____ ______
@@ -49,10 +90,11 @@ function expect(target) {
 // \__,_/\____/\__, /____/
 //            /____/
 
-var sadie = new Dog({
+var settings = {
   color: "black",
   hungry: false
-});
+};
+var sadie = new Dog(settings);
 
 var moonshine = new Dog({
   color: "blue-red"
@@ -69,9 +111,15 @@ var atticus = new Dog();
 
 var mason = new Human();
 
-var julia = new Human({
-  cool: true
-});
+var julia = new Human(
+
+
+  {
+    cool: true
+  }
+
+
+);
 
 
 //                     __           __  __    _                             __
